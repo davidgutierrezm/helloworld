@@ -5,112 +5,255 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixelPerfect - Diseño Web de Alto Impacto</title>
     <style>
-        /* Estilos CSS Básicos */
+        /* Estilos CSS Básicos y RESET */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
             color: #333;
-            background-color: #f4f4f9;
+            background-color: #f4f4f9; /* Fondo general de la página */
         }
+
+        /* --- HEADER --- */
         header {
-            background-color: #5c67f2; /* Azul vibrante */
+            background-color: #264653; /* Azul oscuro del header de la imagen */
             color: white;
-            padding: 20px 40px;
-            text-align: center;
+            padding: 10px 40px; /* Ajuste de padding */
+            display: flex; /* Para alinear elementos horizontalmente */
+            justify-content: space-between; /* Espacio entre logo/título y nav */
+            align-items: center; /* Centrar verticalmente */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sutil sombra */
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        .header-left img { /* Estilo para el logo */
+            height: 30px; /* Tamaño del logo */
+            margin-right: 10px;
+        }
+        header h1 {
+            margin: 0; /* Eliminar margen predeterminado del h1 */
+            font-size: 1.6em; /* Tamaño de fuente del título */
         }
         nav a {
             color: white;
-            margin: 0 20px;
+            margin: 0 15px; /* Menor margen entre elementos de nav */
             text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
+            font-weight: normal; /* No tan bold como antes */
+            padding: 5px 0; /* padding vertical, sin horizontal */
             border-bottom: 2px solid transparent;
-            transition: border-bottom 0.3s;
+            transition: border-bottom 0.3s ease;
         }
         nav a:hover {
             border-bottom: 2px solid white;
         }
-        .banner {
-            background: linear-gradient(135deg, #5c67f2 0%, #3498db 100%); 
+        .nav-icons { /* Estilo para el carrito/íconos al final del nav */
+            display: flex;
+            align-items: center;
+            margin-left: 20px; /* Espacio entre nav y los íconos */
+        }
+        .nav-icons span {
             color: white;
-            padding: 80px 20px;
-            text-align: center;
+            font-size: 1.2em;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        /* --- BANNER --- */
+        .banner {
+            background: linear-gradient(135deg, #2a9d8f 0%, #264653 100%); /* Degradado de la imagen */
+            color: white;
+            padding: 60px 20px; /* Ajuste de padding */
+            text-align: left; /* Alineación del texto a la izquierda */
+            display: flex; /* Usar flexbox para texto e imagen */
+            justify-content: center; /* Centrar el contenido del banner */
+            align-items: center; /* Centrar verticalmente */
+            gap: 50px; /* Espacio entre el texto y la imagen */
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+        }
+        .banner-content {
+            flex: 1; /* Permite que el contenido tome el espacio disponible */
+            min-width: 300px; /* Ancho mínimo para el contenido */
+            max-width: 450px; /* Limitar ancho del texto */
+            text-align: left; /* Asegurar alineación izquierda */
         }
         .banner h2 {
             margin-top: 0;
-            font-size: 3em;
+            font-size: 2.8em; /* Tamaño de fuente del título */
+            line-height: 1.1;
         }
         .banner p {
-            font-size: 1.2em;
+            font-size: 1.1em;
+            margin-bottom: 30px; /* Más espacio debajo del párrafo */
         }
-        /* ESTILO DE IMAGEN ACTUALIZADO A 40% */
         .banner img {
-            max-width: 40%; /* ANCHO MÁXIMO DEL 40% DEL CONTENEDOR */
-            height: auto; /* Mantiene la proporción */
+            max-width: 40%; /* Imagen al 40% del ancho del banner */
+            height: auto;
             border-radius: 8px;
-            margin-top: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            display: block; 
-            margin-left: auto; 
-            margin-right: auto; 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+            display: block; /* Para manejarla como bloque */
+            object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
         }
+        .banner-button {
+            display: inline-block;
+            margin-top: 0; /* Quitar margen superior */
+            padding: 12px 35px; /* Ajustar padding del botón */
+            background-color: white;
+            color: #2a9d8f; /* Color del botón de la imagen */
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .banner-button:hover {
+            background-color: #f0f0f0;
+            color: #264653;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
         .container {
             width: 80%;
             max-width: 1000px;
             margin: 30px auto;
             padding: 20px;
+            text-align: center; /* Centrar el título de la sección */
         }
+        h2 {
+            color: #264653; /* Color oscuro para los títulos de sección */
+            margin-bottom: 40px;
+            font-size: 2.2em;
+        }
+
         .service-box {
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
+            justify-content: center; /* Centrar los boxes de servicio */
+            gap: 30px; /* Espacio entre los boxes */
             margin-top: 30px;
+            flex-wrap: wrap; /* Permitir que los boxes se envuelvan */
         }
         .service-item {
-            flex: 1;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            flex: 0 1 30%; /* Tamaño flexible para 3 boxes por fila */
+            min-width: 250px; /* Ancho mínimo para cada box */
+            padding: 25px;
+            border: none; /* Quitar borde */
+            border-radius: 10px; /* Bordes más redondeados */
             background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra más suave */
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .service-item:hover {
+            transform: translateY(-5px); /* Efecto hover */
         }
         .service-item h3 {
-            color: #5c67f2;
+            color: #2a9d8f; /* Color del ícono/título de servicio */
+            font-size: 1.4em;
+            margin-top: 15px;
+            margin-bottom: 10px;
         }
+        .service-item p {
+            font-size: 0.95em;
+            color: #555;
+        }
+        /* Iconos de servicio */
+        .service-item span {
+            font-size: 2.5em; /* Tamaño del ícono */
+            color: #2a9d8f;
+        }
+
+        /* --- FOOTER --- */
         footer {
-            background-color: #2c3e50; /* Azul oscuro */
-            color: #ecf0f1;
-            padding: 20px 0;
+            background-color: #264653; /* Azul oscuro del header */
+            color: #e0e0e0;
+            padding: 25px 0;
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px; /* Más margen arriba */
+            font-size: 0.9em;
+        }
+        footer p {
+            margin: 5px 0;
         }
         footer a {
-            color: #3498db;
+            color: #8abebf; /* Un color un poco más claro para los enlaces del footer */
             text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries para Responsividad */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            header h1 {
+                margin-bottom: 10px;
+            }
+            nav {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .nav-icons {
+                margin-left: 0;
+            }
+            .banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+                padding: 40px 15px;
+            }
+            .banner-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            .banner img {
+                max-width: 80%; /* Imagen más grande en móvil */
+            }
+            .banner h2 {
+                font-size: 2em;
+            }
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            .service-box {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-item {
+                flex: 0 1 90%;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>PixelPerfect Diseño Web</h1>
+        <div class="header-left">
+            <img src="images/pixelperfect_logo.png" alt="PixelPerfect Logo"> 
+            <h1>PixelPerfect Diseño Web</h1>
+        </div>
         <nav>
             <a href="index.html">Inicio</a>
-            <a href="about.html">Nosotros</a> <a href="#servicios">Servicios</a>
+            <a href="about.html">Nosotros</a>
+            <a href="#servicios">Servicios</a>
             <a href="#contacto">Contacto</a>
+            <div class="nav-icons">
+                <span class="icon">🛒</span> <span class="icon">👤</span> </div>
         </nav>
     </header>
 
     <div class="banner">
-        <h2>Diseño Web que Cautiva y Convierte</h2>
-        <p>Transformamos tu visión de negocio en una experiencia digital fluida, moderna y optimizada.</p>
+        <div class="banner-content">
+            <h2>Diseño Web que Cautiva y Convierte</h2>
+            <p>Transformamos tu visión de negocio en una experiencia digital fluida, moderna y optimizada.</p>
+            <a href="#servicios" class="banner-button">Ver Nuestros Servicios</a>
+        </div>
         
         <img src="images/photodesignstudio.jpg" alt="Estudio de diseño web y desarrollo de código limpio">
-        
-        <a href="#servicios" style="display: inline-block; margin-top: 20px; padding: 10px 30px; background-color: white; color: #5c67f2; text-decoration: none; border-radius: 5px; font-weight: bold;">Ver Nuestros Servicios</a>
     </div>
 
     <div class="container" id="servicios">
@@ -118,24 +261,27 @@
 
         <div class="service-box">
             <div class="service-item">
-                <h3>🖥️ Desarrollo a Medida</h3>
+                <span>🖥️</span> <h3>Desarrollo a Medida</h3>
                 <p>Creamos soluciones únicas usando el código más limpio y las últimas tecnologías (HTML5, CSS3, JavaScript).</p>
             </div>
 
             <div class="service-item">
-                <h3>📱 Diseño Responsive (Móvil)</h3>
+                <span>📱</span>
+                <h3>Diseño Responsive (Móvil)</h3>
                 <p>Tu sitio se verá impecable y funcionará perfectamente en cualquier dispositivo: móvil, tablet o escritorio.</p>
             </div>
 
             <div class="service-item">
-                <h3>💡 UX/UI Estratégica</h3>
+                <span>💡</span>
+                <h3>UX/UI Estratégica</h3>
                 <p>Diseñamos pensando en tu usuario. Interfaz intuitiva (UI) y experiencia de usuario optimizada (UX).</p>
             </div>
         </div>
         
-        <section style="text-align: center; margin-top: 40px;">
+        <section style="text-align: center; margin-top: 60px; padding: 30px; background-color: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
             <h2>¿Listo para empezar?</h2>
-            <p>Contáctanos hoy para una cotización gratuita y lleva tu negocio al siguiente nivel digital.</p>
+            <p style="font-size: 1.1em; margin-bottom: 20px;">Contáctanos hoy para una cotización gratuita y lleva tu negocio al siguiente nivel digital.</p>
+            <a href="#contacto" class="banner-button" style="background-color: #2a9d8f; color: white;">¡Pide tu presupuesto!</a>
         </section>
     </div>
 
